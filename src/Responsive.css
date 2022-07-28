@@ -1,0 +1,97 @@
+@media only screen and (max-width : 992px) {
+  body {
+    width:100%;
+    display: grid;
+    background-color: #080808;
+    margin: 10px;
+  }
+  .message{
+ text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+  .bio {
+    float: right;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3em 0 2em 5em;
+    border-bottom: 0.2px solid #dbdbdb;
+    margin-top: 5em;
+    margin-bottom: 2em;
+  }
+  
+    nav {
+      top: 0;
+      background-color: #fff;
+      height: 3.3em;
+      line-height: 3.3em;
+      width: inherit;
+      border-bottom: 0.1em solid #dbdbdb;
+      grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    }
+    .logo > img {
+      width: 5em;
+      vertical-align: middle;
+    }
+    .nav-links{
+      display:none;
+    height:inherit;
+    width: inherit;
+  
+  }
+    .profile-photo {
+      width: 10em;
+      height: 2em;
+      margin-top: 3em;
+      margin-right: 2em;
+    }
+    
+  .gallery {
+    width:inherit;
+    height:inherit;
+    display:list-item;
+    row-gap: 1.7em;
+    column-gap: 1em;
+  }
+  .search {
+    background: #fafafa;
+    height: 2em;
+    margin: 0.8em;
+    width: 2em;
+    border: 0.07em solid #dbdbdb;
+    border-radius: 0.2em;
+  }
+  .item {
+    height: inherit;
+    width: inherit;
+    background: #000;
+    cursor: pointer;
+  }
+
+  .overlay {
+    padding: 25%;
+    width: 50%;
+    height: 50%;
+    background: rgba(0, 0, 0, .7);
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+  .modal {
+    display:flex;
+    z-index: 10;
+    background: #fff;
+    width: 300%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .modal__header {
+    background: rgb(55, 17, 222);
+    width:inherit;
+    
+    height:inherit;
+    padding: 10px 20px;
+    display: flex;
+  }
+}
