@@ -111,7 +111,7 @@ const Gallery =() =>{
                                             <button
                                                 className='Yes'
                                                 onClick={() => {
-                                                    clear();
+                                                    removePhoto(photo.id);
                                                     closeModal();
                                                 }}
                                             >

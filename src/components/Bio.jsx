@@ -1,6 +1,5 @@
 import getPhotoUrl from 'get-photo-url'
 import { useState } from 'react'
-import profileIcon from '../assets/profileIcon.svg'
 import { db } from '../dexie'
 import { useLiveQuery } from 'dexie-react-hooks'
 
