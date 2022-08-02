@@ -111,7 +111,7 @@ const Gallery =() =>{
                                         </button>
                                             <p>Are you sure you want to delete this Photos?</p>
                                             <button
-                                                className='Yes'
+                                                className="Yes"
                                                 onClick={() => {
                                                     removePhoto();
                                                     closeModal();

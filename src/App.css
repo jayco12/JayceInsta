@@ -162,7 +162,9 @@ nav {
 }
 
 .gallery {
- display: grid;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 1.7em;
   column-gap: 1em;
@@ -269,6 +271,8 @@ nav {
 }
 .close-button{
  width:20px;
+ font-size: 15px;
+ height: 60px;
 }
 .yes{
   position: absolute;
