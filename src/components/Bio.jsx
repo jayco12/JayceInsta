@@ -1,6 +1,7 @@
 import getPhotoUrl from 'get-photo-url'
 import { useState } from 'react'
-import { db } from '../dexie'
+import { db } from '../dexie';
+import profileIcon from '../assets/profileIcon.svg'
 import { useLiveQuery } from 'dexie-react-hooks'
 
 const Bio = () =>{
@@ -8,7 +9,7 @@ const Bio = () =>{
     //     name:'Joseph Oduyebo',
     //     about:'Building instagram clone- Learning react, webstack challenge.',
     // })
-    const userDetails = useLiveQuery(()=> db.bio.get('info' ), [])
+    const userDetails = useLiveQuery(()=> db.bio.get('info' ), [], )
 
     const [editFormIsOpen, setEditFormIsOpen] =useState(false)
     
@@ -46,7 +47,6 @@ const Bio = () =>{
         await db.bio.put(newProfilePhoto, 'profilePhoto')
     }
 
-
     const editForm = (
        <form className='edit-bio-form 'onSubmit={(e)=>updateUserDetails(e)}>
             <input type="text" id='nameOfUser' name='nameOfUser'defaultValue={userDetails?.name} placeholder='Your name' />
@@ -72,14 +72,33 @@ const Bio = () =>{
            
             <label htmlFor='profilePhotoInput' onClick={updateProfilePhoto}>
                 <div className="profile-photo" role="button" title="click to edit">
-                    <img src={profilePhoto} alt="profile"/>
+                   {profilePhoto ?
+                    (
+                        <img src={profilePhoto} alt="profile"/>
+                    ):(
+                        <img src={profileIcon} alt="profile"/>
+                    )
+                   } 
                 </div>   
                 
             </label>
          
             <div className="profile-info" >
-                <p className="name">{userDetails?.name}</p>
-                <p className="about">{userDetails?.about}</p>
+                {userDetails ?
+                    (
+                        <p className="name">{userDetails?.name}</p>
+
+                    ):(
+                        <p className="name">{'Joseph Oduyebo'}</p>
+                    )
+                }
+                {userDetails ?
+                    (
+                        <p className="about">{userDetails?.about}</p>
+                    ):(
+                        <p className="about">{'I am a web developer'}</p>
+                    )
+                }
                 {editFormIsOpen ? editForm :  editButton}
             </div>
         </section>

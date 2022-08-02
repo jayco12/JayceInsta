@@ -14,6 +14,8 @@ const Gallery =() =>{
 
     const [isOpen, setIsOpen]= useState(false);
 
+    const [isClearOpen, setIsClearOpen]= useState(false);
+
     const openModal =() => {
         setIsOpen(true)
     }
@@ -21,8 +23,15 @@ const Gallery =() =>{
     const closeModal =() =>{
         setIsOpen(false);
     }
-    const handleClick = (id) => {
-        db.gallery.add(id)
+
+    const openClearModal =() => {
+        setIsClearOpen(true)
+    }
+
+    const closeClearModal =() =>{
+        setIsClearOpen(false);
+    }
+    const handleClick = () => {
         if(isClicked){
             setLikes(likes - 1);
         }else{
@@ -55,23 +64,23 @@ const Gallery =() =>{
                 <i className="add-photo-button fas fa-plus-square" onClick={addPhoto}></i>
             </label>
             
-            <label htmlFor="clear">
-                {isOpen &&(
+                {isClearOpen &&(
                     <div className="modal">
+                          <div className='main'>
                         <h2>Delete Message</h2>
                         <button 
-                            onClick={closeModal} 
+                            onClick={closeClearModal} 
                             className="close-button"
                         >
                             &times;
                         </button>
-                        <div className='main'>
+                      
                           <p>Are you sure you want to clear all Photos?</p>
                           <button
                               className='Yes'
                               onClick={() => {
                                 clear();
-                                closeModal();
+                                closeClearModal();
                               }}
                             >
                                 Yes, Delete it!
@@ -80,38 +89,31 @@ const Gallery =() =>{
                     </div>
                 )}
                 <i className="clear-button fas fa-times" 
-                    onClick={() => openModal()}
+                    onClick={() => openClearModal()}
                 >
                     Clear All Photos
                 </i>
-            </label>   
             
             <section className="gallery">
                 {!allPhotos &&<p className="gallery-loader"> <img src={loader} alt=""/></p>}
                 {!allPhotos?.length>0 && <div className='message'>No photo available</div>}
-                { allPhotos?.map(photo =>(
-                            <div className="item" key={photo.id}>
-                                <img src={photo.url } className='item-image' alt=""/>
-                                
-                                <button className={`like-button ${isClicked && 'liked'}`}  onClick={() => {handleClick(photo.id)}}>
-                                    <span className="likes-counter">{`Like | ${likes}`}</span>
-                                </button>
-
-                                {isOpen &&(
+                
+                {isOpen &&(
                                     <div className="modal">
-                                        <h2>Delete Message</h2>
+                                       
+                                        <div className='main'>
+                                             <h2>Delete Message</h2>
                                         <button 
                                             onClick={closeModal} 
                                             className="close-button"    
                                         >    
                                             &times;
                                         </button>
-                                        <div className='main'>
-                                            <p>Are you sure you want to clear all Photos?</p>
+                                            <p>Are you sure you want to delete this Photos?</p>
                                             <button
                                                 className='Yes'
                                                 onClick={() => {
-                                                    removePhoto(photo.id);
+                                                    removePhoto();
                                                     closeModal();
                                                 }}
                                             >
@@ -121,6 +123,14 @@ const Gallery =() =>{
                                     </div>
                                         
                                 )}
+                { allPhotos?.map(photo =>(
+                            <div className="item" key={photo.id}>
+                                <img src={photo.url } className='item-image' alt=""/>
+                                
+                                <button className={`like-button ${isClicked && 'liked'}`}  onClick={() => {handleClick()}}>
+                                    <span className="likes-counter">{`Like | ${likes}`}</span>
+                                </button>
+                    
                                 <button className="delete-button" 
                                     onClick={ () => openModal()}
                                 >

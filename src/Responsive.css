@@ -1,9 +1,13 @@
-@media only screen and (max-width : 992px) {
+@media screen and (max-width : 1000px) {
   body {
     width:100%;
     display: grid;
     background-color: #080808;
     margin: 10px;
+  }
+  .profile-info{
+    align-items: center;
+    
   }
   .message{
  text-align: center;
@@ -35,8 +39,8 @@
     }
     .nav-links{
       display:none;
-    height:inherit;
-    width: inherit;
+      height:inherit;
+      width: inherit;
   
   }
     .profile-photo {
@@ -68,30 +72,111 @@
     cursor: pointer;
   }
 
-  .overlay {
-    padding: 25%;
-    width: 50%;
-    height: 50%;
-    background: rgba(0, 0, 0, .7);
+  .modal-blur {
+    filter: url(#gaussian-blur);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+  }
+  
+  .modal {
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
-  }
-  .modal {
-    display:flex;
-    z-index: 10;
-    background: #fff;
-    width: 300%;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
-  .modal__header {
-    background: rgb(55, 17, 222);
-    width:inherit;
-    
-    height:inherit;
-    padding: 10px 20px;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: rgba(84, 84, 86, 0.9);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
     display: flex;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+    opacity: 0;
+    -webkit-animation:modal-fadeIn 0.5s 0.2s forwards;
+    -moz-animation: modal-fadeIn 0.5s 0.2s forwards;
+    -o-animation: modal-fadeIn 0.5s 0.2s forwards;
+    animation: modal-fadeIn 0.5s 0.2s forwards;
+  }
+  
+  .main {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    padding: 20px;
+    text-align: left;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 75px rgba(165, 18, 18, 0.13);
+    color: #666;
+  }
+  
+  .main > h1 {
+    margin-top: 0;
+  }
+  
+  .main > h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .modal-button-group {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  .modal-button-group > button {
+    outline: none;
+    background: #333;
+    border: none;
+    display: inline-block;
+    padding: 6px 18px;
+    color: #eee;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  @-webkit-keyframes modal-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @-moz-keyframes modal-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @-o-keyframes modal-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes modal-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

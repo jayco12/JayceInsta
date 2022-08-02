@@ -162,18 +162,13 @@ nav {
 }
 
 .gallery {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
+ display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 1.7em;
   column-gap: 1em;
 }
 
 .item {
-  
   height: 17.5em;
   width: 17.5em;
   background: #000;
@@ -201,14 +196,20 @@ nav {
   border: 1px solid #c8c8c8;
   transform: scale(1.5);
 }
-.overlay {
+.modal-blur {
+  filter: url(#gaussian-blur);
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 99;
-  background: rgba(68, 57, 168, 0.9);
+  background: rgba(84, 84, 86, 0.9);
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -218,56 +219,102 @@ nav {
   -ms-align-items: center;
   align-items: center;
   opacity: 0;
-  -webkit-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-  -moz-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-  -o-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-  animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+  -webkit-animation:modal-fadeIn 0.5s 0.2s forwards;
+  -moz-animation: modal-fadeIn 0.5s 0.2s forwards;
+  -o-animation: modal-fadeIn 0.5s 0.2s forwards;
+  animation: modal-fadeIn 0.5s 0.2s forwards;
 }
 
-.modal {
-  position: relative;
-  z-index: 20;
-  background: rgb(48, 13, 137);
-  width: 50%;
+.main {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+  padding: 20px;
+  text-align: left;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgba(165, 18, 18, 0.13);
+  color: #666;
+}
+
+.main > h1 {
+  margin-top: 0;
+}
+
+.main > h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.modal-button-group {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
   display: flex;
-
-  /* Center the modal */
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  justify-content: flex-start;
+  margin-top: 20px;
 }
 
-.modal__header {
-  background: rgb(55, 17, 222);
-  padding: 10px 20px;
-  display: flex;
-}
-
-.main {
-  padding: 20px;
-}
-
-.close-button {
+.modal-button-group > button {
+  outline: none;
+  background: #333;
   border: none;
-  background: transparent;
-  padding: 10px;
+  display: inline-block;
+  padding: 6px 18px;
+  color: #eee;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 12px;
   cursor: pointer;
-  color: #fff;
-  font-size: 36px;
 }
-.Yes{
-  border: 1px solid #e0d0d0;
-  padding: 3px;
-  background-color: #ca3838;
-  height:35px
+.close-button{
+ width:20px;
+}
+.yes{
+  position: absolute;
+  margin-left: -8em;
+  margin-top: 11em;
+  padding: 0.1em 0.3em;
+  background-color: #890000;
+  color: #fff;
+  border: 1px solid #c8c8c8;
+  transform: scale(1.5);
+ }
+
+@-webkit-keyframes modal-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.close-button:hover {
-  color: yellow;
+@-moz-keyframes modal-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes modal-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .button {
